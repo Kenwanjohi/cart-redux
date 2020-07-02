@@ -1,0 +1,11 @@
+.listgrid {
+    display: grid;
+    margin: 10px auto;
+    grid-template-columns: repeat(5, 1fr);
+    width: 80%;
+}
+.title {
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+}

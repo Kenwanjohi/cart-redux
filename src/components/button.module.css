@@ -1,0 +1,12 @@
+.button {
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 1em;
+    padding: .5em 1em;
+    border: .2em solid black;
+    outline: none;
+    display: block;
+    width: 150px;
+    height: 30px;
+    background-color: transparent;
+}

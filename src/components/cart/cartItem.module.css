@@ -1,0 +1,25 @@
+.row {
+    display: table;
+    width: 80%;
+    margin: 10px auto;
+    border-bottom: 1px solid black;
+    padding: 12px 0;
+}
+.cell {
+    display: table-cell;
+    width: 30%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 4px 0;
+}
+.cell p {
+    font-size: 1.5em;
+}
+.input {
+    width: 70px;
+    height: 20px;
+    margin-bottom: .5em;
+}
+.cell1 {
+    text-align: left;
+}
