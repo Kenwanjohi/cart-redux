@@ -2,7 +2,8 @@ import React from 'react'
 import Styles from './cart.module.css'
 import CartItem from './cartItem'
 import Button from '../button'
-const Cart = () => {
+const Cart = ({cartItems, onDelete}) => {
+    
     return(
         <div className={Styles.cart}>
 
@@ -21,8 +22,15 @@ const Cart = () => {
                     <p>Total</p>
                 </div>
             </div>
-            <CartItem/>
-            <CartItem/>
+            {!cartItems ? <div className={Styles.alt}>please add items to cart</div> :
+            (cartItems || []).map(item => {
+                return <CartItem
+                key={item.id}
+                item={item}
+                onDelete = {onDelete}
+                 />
+            })
+            }
             <div className={Styles.summation}>
                 <div className={Styles.totprice}>
                     <div>Total:<span className={Styles.price}>$8.00</span></div>

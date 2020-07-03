@@ -1,11 +1,23 @@
 .listgrid {
     display: grid;
     margin: 10px auto;
-    grid-template-columns: repeat(5, 1fr);
-    width: 80%;
+    grid-template-columns: repeat(4, 300px);
+    width: 90%;
 }
 .title {
     font-size: 25px;
     font-weight: bolder;
     text-align: center;
+}
+@media (max-width: 450px) {
+    .listgrid {
+        grid-template-columns: repeat(2, 200px);
+        width: 100%;
+    }
+}
+@media (max-width: 780px) {
+    .listgrid {
+        grid-template-columns: repeat(3, 260px);
+        width: 100%;
+    }
 }

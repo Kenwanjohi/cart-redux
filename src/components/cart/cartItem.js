@@ -1,23 +1,23 @@
 import React from 'react'
 import Styles from './cartItem.module.css'
-import Button from '../button'
-const CartItem = () => {
+const CartItem = ({item, onDelete}) => {
+    const {id, product, newprice, price, quantity} = item
     return(
         <div className={Styles.row} >
         <div className={`${Styles.cell} ${Styles.cell1}`}>
-            <p>product description</p>
-            <div className>
-            <Button unique='true' >remove</Button>
+            <p>{product}</p>
+            <div>
+            <button onClick={() => onDelete(id)} >remove</button>
             </div>
         </div>
         <div className={Styles.cell}>
-            <p>$2.00</p>
+            <p>${price}</p>
         </div>
         <div className={Styles.cell}>
-        <input className={Styles.input} id='quantity' type='number'/>
+        <input className={Styles.input} value={quantity} type='number'/>
         </div>
         <div className={Styles.cell}>
-            <p>$4.00</p>
+            <p>${newprice}</p>
         </div>
     </div>
     )

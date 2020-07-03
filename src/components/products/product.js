@@ -1,15 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './product.module.css'
 import Button from '../button'
-const Product = () => {
+
+
+const Product = ({prod, onAddToCart}) => {
+    const {product, price, id} = prod
+    const [value, setValue] = useState('')
+
+
+    const onchangeValue = (e) => {
+        setValue(e.target.value)
+    }
+
+    
+    const onSubmit =(e) => {
+        const newPrice = (price * value).toFixed(2)
+        onAddToCart(id, product, newPrice, price, value) 
+        setValue('')
+        e.preventDefault()
+    }
+    
+    
     return(
         <div className={Styles.product}>
-            <div className={Styles.name}>carrots</div>
-            <div className={Styles.price}>$2.00</div>
+            <div className={Styles.name}>{product}</div>
+            <div className={Styles.price}>${price}</div>
             <div>
-                    <label className={Styles.label} for='quantity'>Quantity</label>
-                    <input className={Styles.input} id='quantity' type='number'/>
-                    <Button>add to cart</Button>
+                <form onSubmit={onSubmit}>
+                    <label className={Styles.label} htmlFor={id}>Quantity</label>
+                    <input className={Styles.input} id={id} type='number' value={value} onChange={onchangeValue}/>
+                    <Button type='submit'>add to cart</Button>
+                </form>
             </div>
         </div>
     )

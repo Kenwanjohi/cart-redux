@@ -1,18 +1,19 @@
 import React from 'react'
 import Product from './product'
 import Styles from './products.module.css'
-const Products = () => {
+const Products = ({products, onAddToCart}) => {
     return(
         <>
         <div className={Styles.title}>Products</div>
         <div className={Styles.listgrid}>
-            <Product/>
-            <Product/>
-            <Product/>
-            <Product/>
-            <Product/>
-            <Product/>
-            <Product/>
+            {(products || []).map(product => {
+                return (<Product
+                    key = {product.id}
+                    prod={product}
+                    onAddToCart={onAddToCart}
+                />)
+            })
+            }
         </div>
         </>
     )

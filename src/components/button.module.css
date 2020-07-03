@@ -9,4 +9,10 @@
     width: 150px;
     height: 30px;
     background-color: transparent;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+.button:hover {
+    background-color: black;
+    color: rgb(238, 238, 238);
 }
