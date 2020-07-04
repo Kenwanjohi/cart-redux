@@ -14,8 +14,8 @@ const Product = ({prod, onAddToCart}) => {
 
     
     const onSubmit =(e) => {
-        const newPrice = (price * value).toFixed(2)
-        onAddToCart(id, product, newPrice, price, value) 
+        const newPrice = Number((price * value).toFixed(2))
+        onAddToCart(id, product, newPrice, price, parseInt(value)) 
         setValue('')
         e.preventDefault()
     }

@@ -3,10 +3,17 @@ import {ITEM_REMOVE} from '../constants/actionTypes'
 
 const initialState = []
 
-
 const applyAddToCart = (state, action) => {
-    return  [ ...state, action.product ]
+  const index = state.findIndex(item => item.id === action.product.id)
+  if(index === -1) {
+    return [...state, action.product]
+  } else {
+    return state.map((item, i) => 
+      index === i ? {...item, newprice: ((item.quantity + action.product.quantity) * item.price).toFixed(2), quantity: item.quantity + action.product.quantity} : item
+    )
+  }
 }
+
 
 const applyRemoveFromCart = (state, action) => {
   return [...state.filter(item => item.id !== action.id)]
