@@ -1,7 +1,16 @@
 import React, { useState } from 'react'
+import {CART_ADD} from '../../constants/actionTypes'
+import { connect } from 'react-redux';
 import Styles from './product.module.css'
 import Button from '../button'
-
+function mapDispatchToProps(dispatch) {
+    return {
+    onAddToCart: (id, product, newprice, price, quantity) => dispatch({
+        type: CART_ADD,
+        product: {id, product, newprice, price, quantity}
+        }),
+    };
+    }
 
 const Product = ({prod, onAddToCart}) => {
     const {product, price, id} = prod
@@ -15,8 +24,10 @@ const Product = ({prod, onAddToCart}) => {
     
     const onSubmit =(e) => {
         const newPrice = Number((price * value).toFixed(2))
-        onAddToCart(id, product, newPrice, price, parseInt(value)) 
-        setValue('')
+        if(value !== '' && value > 0) {
+            onAddToCart(id, product, newPrice, price, parseInt(value)) 
+            setValue('')
+        }
         e.preventDefault()
     }
     
@@ -35,5 +46,7 @@ const Product = ({prod, onAddToCart}) => {
         </div>
     )
 }
-
-export default Product
+export default connect(
+    null,
+    mapDispatchToProps
+    )(Product);

@@ -1,6 +1,4 @@
-import { CART_ADD } from '../constants/actionTypes'
-import {ITEM_REMOVE} from '../constants/actionTypes'
-
+import {CART_ADD ,ITEM_REMOVE} from '../constants/actionTypes'
 const initialState = []
 
 const applyAddToCart = (state, action) => {
@@ -27,6 +25,7 @@ function cartReducer(state=initialState, action) {
         case ITEM_REMOVE: {
           return applyRemoveFromCart(state, action)
         }
+
         default :return state
     }
 }

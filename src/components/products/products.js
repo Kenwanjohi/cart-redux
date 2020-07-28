@@ -1,7 +1,14 @@
 import React from 'react'
 import Product from './product'
 import Styles from './products.module.css'
-const Products = ({products, onAddToCart}) => {
+import { connect } from 'react-redux';
+function mapStateToProps(state) {
+    return {
+    products: state.productsState,
+    };
+    }
+    const Products = ({products}) => {
+        console.log(products)
     return(
         <>
         <div className={Styles.title}>Products</div>
@@ -10,7 +17,6 @@ const Products = ({products, onAddToCart}) => {
                 return (<Product
                     key = {product.id}
                     prod={product}
-                    onAddToCart={onAddToCart}
                 />)
             })
             }
@@ -19,4 +25,7 @@ const Products = ({products, onAddToCart}) => {
     )
 }
 
-export default Products
+export default connect(
+    mapStateToProps,
+    )(Products);
+    

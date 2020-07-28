@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import Styles from './cartItem.module.css'
+import { ITEM_REMOVE} from '../../constants/actionTypes'
+import {connect} from 'react-redux'
 import Button from '../button'
 const CartItem = ({item, onDelete}) => {
     const {id, product, newprice, price, quantity} = item
@@ -28,5 +30,12 @@ const CartItem = ({item, onDelete}) => {
     </div>
     )
 }
-
-export default CartItem
+function mapDispatchToProps(dispatch) {
+    return {
+    onDelete: (id) => dispatch({
+        type: ITEM_REMOVE,
+        id
+        }),
+    };
+    }
+export default connect(undefined, mapDispatchToProps)(CartItem)

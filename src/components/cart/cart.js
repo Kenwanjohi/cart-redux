@@ -1,9 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Styles from './cart.module.css'
 import CartItem from './cartItem'
 import Button from '../button'
-const Cart = ({cartItems, onDelete}) => {
-    
+
+const Cart = ({cartItems}) => {
     return(
         <div className={Styles.cart}>
 
@@ -27,7 +28,6 @@ const Cart = ({cartItems, onDelete}) => {
                 return <CartItem
                 key={item.id}
                 item={item}
-                onDelete = {onDelete}
                  />
             })
             }
@@ -42,5 +42,9 @@ const Cart = ({cartItems, onDelete}) => {
         </div>
     )
 }
-
-export default Cart
+function mapStateToProps(state) {
+    return {
+    cartItems: state.cartState,
+    };
+    }
+export default connect(mapStateToProps)(Cart)
