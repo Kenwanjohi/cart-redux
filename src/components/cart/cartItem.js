@@ -3,16 +3,17 @@ import Styles from './cartItem.module.css'
 import { ITEM_REMOVE} from '../../constants/actionTypes'
 import {connect} from 'react-redux'
 import Button from '../button'
-const CartItem = ({item, onDelete}) => {
+const CartItem = ({item, onDelete, onQuantity}) => {
     const {id, product, newprice, price, quantity} = item
     const [value, setValue] = useState(quantity)
     useEffect(() => {
         setValue(quantity)
+        
     }, [quantity])
     const onchange = (e) => {
+        onQuantity(id, value)
         setValue(e.target.value)
     }
-    console.log(value)
     return(
         <div className={Styles.row} >
         <div className={`${Styles.cell} ${Styles.cell1}`}>
@@ -38,6 +39,11 @@ function mapDispatchToProps(dispatch) {
     onDelete: (id) => dispatch({
         type: ITEM_REMOVE,
         id
+        }),
+    onQuantity: (id, newQuantity) => dispatch({
+        type: 'CHANGE_QUANTITY',
+        id,
+        newQuantity
         }),
     };
     }
