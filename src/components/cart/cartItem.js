@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Styles from './cartItem.module.css'
 import { ITEM_REMOVE} from '../../constants/actionTypes'
 import {connect} from 'react-redux'
@@ -6,10 +6,13 @@ import Button from '../button'
 const CartItem = ({item, onDelete}) => {
     const {id, product, newprice, price, quantity} = item
     const [value, setValue] = useState(quantity)
-    
+    useEffect(() => {
+        setValue(quantity)
+    }, [quantity])
     const onchange = (e) => {
         setValue(e.target.value)
     }
+    console.log(value)
     return(
         <div className={Styles.row} >
         <div className={`${Styles.cell} ${Styles.cell1}`}>
@@ -22,7 +25,7 @@ const CartItem = ({item, onDelete}) => {
             <p>${price}</p>
         </div>
         <div className={Styles.cell}>
-        <input className={Styles.input} onChange={onchange}  value={value} type='number'/>
+        <input className={Styles.input} onChange={onchange} value={value} type='number'/>
         </div>
         <div className={Styles.cell}>
             <p>${newprice}</p>

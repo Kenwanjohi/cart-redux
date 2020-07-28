@@ -7,7 +7,7 @@ const applyAddToCart = (state, action) => {
     return [...state, action.product]
   } else {
     return state.map((item, i) => 
-      index === i ? {...item, newprice: ((item.quantity + action.product.quantity) * item.price).toFixed(2), quantity: item.quantity + action.product.quantity} : item
+      index === i ? {...item, newprice: Number(((item.quantity + action.product.quantity) * item.price).toFixed(2)), quantity: item.quantity + action.product.quantity} : item
     )
   }
 }
