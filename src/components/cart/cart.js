@@ -5,6 +5,10 @@ import CartItem from './cartItem'
 import Button from '../button'
 
 const Cart = ({cartItems}) => {
+    const subtotal = cartItems.map(item => item.newprice)
+    .reduce((acc, cartvalue) => {
+      return acc + cartvalue
+    },0)
     return(
         <div className={Styles.cart}>
 
@@ -33,7 +37,7 @@ const Cart = ({cartItems}) => {
             }
             <div className={Styles.summation}>
                 <div className={Styles.totprice}>
-                    <div>Total:<span className={Styles.price}>$8.00</span></div>
+                    <div>Total:<span className={Styles.price}>${subtotal}</span></div>
                 </div>
                 <div>
                     <Button>checkout</Button>
