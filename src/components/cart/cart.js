@@ -8,7 +8,7 @@ const Cart = ({cartItems}) => {
     const subtotal = cartItems.map(item => item.newprice)
     .reduce((acc, cartvalue) => {
       return acc + cartvalue
-    },0)
+    },0).toFixed(2)
     return(
         <div className={Styles.cart}>
 
