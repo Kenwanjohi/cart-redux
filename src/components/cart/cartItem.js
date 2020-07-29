@@ -5,14 +5,10 @@ import {connect} from 'react-redux'
 import Button from '../button'
 const CartItem = ({item, onDelete, onQuantity}) => {
     const {id, product, newprice, price, quantity} = item
-    const [value, setValue] = useState(quantity)
-    useEffect(() => {
-        setValue(quantity)
-        
-    }, [quantity])
+    // const [value, setValue] = useState(quantity)
+
     const onchange = (e) => {
-        onQuantity(id, value)
-        setValue(e.target.value)
+        onQuantity(id, e.target.value)
     }
     return(
         <div className={Styles.row} >
@@ -26,7 +22,7 @@ const CartItem = ({item, onDelete, onQuantity}) => {
             <p>${price}</p>
         </div>
         <div className={Styles.cell}>
-        <input className={Styles.input} onChange={onchange} value={value} type='number'/>
+        <input className={Styles.input} onChange={onchange} value={quantity} type='number'/>
         </div>
         <div className={Styles.cell}>
             <p>${newprice}</p>
